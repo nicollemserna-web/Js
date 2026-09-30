@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para ti, mi raton ❤️</title>
+<style>
+  body { font-family: Georgia, serif; background: #fff0f3; margin: 0; padding: 20px; text-align: center; color: #5a1a2b; }
+  h1 { color: #c9184a; }
+  p.tip { color: #a4506a; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; max-width: 700px; margin: 0 auto; }
+  .card { height: 150px; perspective: 800px; cursor: pointer; }
+  .inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+  .card.flip .inner { transform: rotateY(180deg); }
+  .side { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 12px; border-radius: 16px; backface-visibility: hidden; box-shadow: 0 4px 10px rgba(201,24,74,0.2); }
+  .front { background: #c9184a; color: white; font-size: 40px; }
+  .back { background: white; color: #c9184a; font-size: 17px; transform: rotateY(180deg); }
+</style>
+</head>
+<body>
+<h1>Para ti, mi raton ❤️</h1>
+<p class="tip">Toca cada corazón para descubrir un mensaje</p>
+<div class="grid" id="grid"></div>
+
+<script>
+  // ✏️ Escribe aquí tus mensajes, uno por línea, entre comillas:
+  const messages = [
+    "Eres mi lugar favorito en el mundo",
+    "Gracias por hacerme reír todos los días",
+    "Admiro lo fuerte y bueno que eres",
+    "Contigo todo es más fácil",
+    "Me encanta la vida que construimos juntos",
+    "Te elegiría una y mil veces más",
+  ];
+
+  const grid = document.getElementById("grid");
+  messages.forEach(msg => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<div class="inner"><div class="side front">❤️</div><div class="side back">${msg}</div></div>`;
+    card.onclick = () => card.classList.toggle("flip");
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
